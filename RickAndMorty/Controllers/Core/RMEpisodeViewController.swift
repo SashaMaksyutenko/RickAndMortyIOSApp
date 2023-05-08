@@ -6,6 +6,7 @@
 //
 
 import UIKit
+/// Controller to show and search for Episodes 
 
 final class RMEpisodeViewController: UIViewController {
 
