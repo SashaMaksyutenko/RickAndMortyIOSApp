@@ -5,16 +5,17 @@
 //  Created by Sasha Maksyutenko on 21.05.2023.
 //
 
-import Foundation
+import UIKit
 protocol RMEpisodeDataRender{
     var name:String{get}
     var air_date:String{get}
     var episode:String{get}
 }
-final class RMCharacterEpisodeCollectionViewCellViewModel{
+final class RMCharacterEpisodeCollectionViewCellViewModel:Hashable,Equatable{
     private let episodeDataUrl:URL?
     private var isFetching=false
     private var dataBlock:((RMEpisodeDataRender)->Void)?
+    public let borderColor:UIColor
     private var episode:RMEpisode?{
         didSet{
             guard let model = episode else{
@@ -24,8 +25,9 @@ final class RMCharacterEpisodeCollectionViewCellViewModel{
         }
     }
     //MARK: - Init
-    init(episodeDataUrl:URL?){
+    init(episodeDataUrl:URL?,borderColor:UIColor = .systemBlue){
         self.episodeDataUrl=episodeDataUrl
+        self.borderColor=borderColor
     }
     //MARK: - public
     public func regirsterForData(_ block:@escaping(RMEpisodeDataRender)->Void){
@@ -38,7 +40,6 @@ final class RMCharacterEpisodeCollectionViewCellViewModel{
             }
             return
         }
-        print(episodeDataUrl)
             guard let url=episodeDataUrl,
                   let request=RMRequest(url:url) else{
             return
@@ -55,4 +56,11 @@ final class RMCharacterEpisodeCollectionViewCellViewModel{
             }
         }
     }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.episodeDataUrl?.absoluteString ?? "")
+    }
+    static func == (lhs: RMCharacterEpisodeCollectionViewCellViewModel, rhs: RMCharacterEpisodeCollectionViewCellViewModel) -> Bool {
+        return lhs.hashValue==rhs.hashValue
+    }
+    
 }
