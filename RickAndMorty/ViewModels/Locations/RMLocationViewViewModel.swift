@@ -25,7 +25,13 @@ final class RMLocationViewViewModel{
     // will contain next url, if present
     private var apiInfo:RMGetAllLocationsResponse.Info?
     public private (set) var cellViewModels:[RMLocationTableViewCellViewModel]=[]
-    init(){
+    init(){}
+    public func location(at index:Int)->RMLocation?{
+        guard index < locations.count, index >= 0 else {
+            return nil
+        }
+        return self.locations[index]
+        
     }
     public func fetchLocations(){
         RMService.shared.execute(.listLocationsRequest, expecting: RMGetAllLocationsResponse.self) {[weak self] result in
@@ -40,7 +46,6 @@ final class RMLocationViewViewModel{
                 break
             }
         }
-        
     }
     private var hasMoreResults:Bool{
         return false
