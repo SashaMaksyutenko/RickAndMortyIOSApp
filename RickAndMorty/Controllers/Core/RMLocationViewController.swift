@@ -34,7 +34,11 @@ final class RMLocationViewController: UIViewController,RMLocationViewViewModelDe
             primaryView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-    @objc private func didTapSearch(){}
+    @objc private func didTapSearch(){
+        let vc=RMSearchViewController(config: .init(type: .location))
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
+    }
     //MARK: - RMLocationViewDelegate
     func rmLocationView(_ locationView: RMLocationView, didSelect location: RMLocation) {
         let vc=RMLocationDetailViewController(location: location)

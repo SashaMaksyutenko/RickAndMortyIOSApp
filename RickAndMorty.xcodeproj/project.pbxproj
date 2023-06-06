@@ -10,6 +10,12 @@
 		F1070BF62A2E1983006F654D /* RMLocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1070BF52A2E1983006F654D /* RMLocationDetailViewController.swift */; };
 		F1070BF92A2E758D006F654D /* RMLocatiionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1070BF82A2E758D006F654D /* RMLocatiionDetailView.swift */; };
 		F1070BFB2A2E90AB006F654D /* RMLocationDetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1070BFA2A2E90AB006F654D /* RMLocationDetailViewViewModel.swift */; };
+		F1070BFE2A2F5777006F654D /* RMSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1070BFD2A2F5777006F654D /* RMSearchView.swift */; };
+		F1070C002A2F58C9006F654D /* RMSearchViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1070BFF2A2F58C9006F654D /* RMSearchViewViewModel.swift */; };
+		F1070C022A2F5EA7006F654D /* RMNoSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1070C012A2F5EA7006F654D /* RMNoSearchResultsView.swift */; };
+		F1070C052A2F5F3A006F654D /* RMNoSearchResultsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1070C042A2F5F3A006F654D /* RMNoSearchResultsViewViewModel.swift */; };
+		F1070C072A2F5FD5006F654D /* RMSearchInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1070C062A2F5FD5006F654D /* RMSearchInputView.swift */; };
+		F1070C092A2F601A006F654D /* RMSearchInputViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1070C082A2F601A006F654D /* RMSearchInputViewViewModel.swift */; };
 		F13ACD672A1D29AA000C792B /* RMEpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13ACD662A1D29AA000C792B /* RMEpisodeDetailViewController.swift */; };
 		F13ACD692A1F9171000C792B /* RMAPICacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13ACD682A1F9171000C792B /* RMAPICacheManager.swift */; };
 		F13ACD6B2A1FA11D000C792B /* RMEpisodeDetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13ACD6A2A1FA11D000C792B /* RMEpisodeDetailViewViewModel.swift */; };
@@ -72,6 +78,12 @@
 		F1070BF52A2E1983006F654D /* RMLocationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMLocationDetailViewController.swift; sourceTree = "<group>"; };
 		F1070BF82A2E758D006F654D /* RMLocatiionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMLocatiionDetailView.swift; sourceTree = "<group>"; };
 		F1070BFA2A2E90AB006F654D /* RMLocationDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMLocationDetailViewViewModel.swift; sourceTree = "<group>"; };
+		F1070BFD2A2F5777006F654D /* RMSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMSearchView.swift; sourceTree = "<group>"; };
+		F1070BFF2A2F58C9006F654D /* RMSearchViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMSearchViewViewModel.swift; sourceTree = "<group>"; };
+		F1070C012A2F5EA7006F654D /* RMNoSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMNoSearchResultsView.swift; sourceTree = "<group>"; };
+		F1070C042A2F5F3A006F654D /* RMNoSearchResultsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMNoSearchResultsViewViewModel.swift; sourceTree = "<group>"; };
+		F1070C062A2F5FD5006F654D /* RMSearchInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMSearchInputView.swift; sourceTree = "<group>"; };
+		F1070C082A2F601A006F654D /* RMSearchInputViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMSearchInputViewViewModel.swift; sourceTree = "<group>"; };
 		F13ACD662A1D29AA000C792B /* RMEpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMEpisodeDetailViewController.swift; sourceTree = "<group>"; };
 		F13ACD682A1F9171000C792B /* RMAPICacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAPICacheManager.swift; sourceTree = "<group>"; };
 		F13ACD6A2A1FA11D000C792B /* RMEpisodeDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMEpisodeDetailViewViewModel.swift; sourceTree = "<group>"; };
@@ -149,6 +161,26 @@
 				F1070BF82A2E758D006F654D /* RMLocatiionDetailView.swift */,
 			);
 			path = LocationDetails;
+			sourceTree = "<group>";
+		};
+		F1070BFC2A2F573D006F654D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F1070BFD2A2F5777006F654D /* RMSearchView.swift */,
+				F1070C012A2F5EA7006F654D /* RMNoSearchResultsView.swift */,
+				F1070C062A2F5FD5006F654D /* RMSearchInputView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		F1070C032A2F5ED6006F654D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F1070BFF2A2F58C9006F654D /* RMSearchViewViewModel.swift */,
+				F1070C042A2F5F3A006F654D /* RMNoSearchResultsViewViewModel.swift */,
+				F1070C082A2F601A006F654D /* RMSearchInputViewViewModel.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		F13ACD6E2A1FD14E000C792B /* Episode */ = {
@@ -251,6 +283,7 @@
 		F1903CBF2A095DF500BFC06A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F1070BFC2A2F573D006F654D /* Search */,
 				F1070BF72A2E7540006F654D /* LocationDetails */,
 				F1D648C02A2A45E100E55FE0 /* Location */,
 				F13ACD842A277557000C792B /* SwiftUI */,
@@ -266,6 +299,7 @@
 		F1903CC02A095E0900BFC06A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				F1070C032A2F5ED6006F654D /* Search */,
 				F1D648C92A2CCEC000E55FE0 /* Locations */,
 				F13ACD7D2A241D55000C792B /* Settings */,
 				F13ACD7A2A22D7BD000C792B /* EpisodeDetail */,
@@ -477,12 +511,15 @@
 				F1E2E3A22A126E8200EB1394 /* RMCharacterDetailViewViewModel.swift in Sources */,
 				F1903CDC2A09BADF00BFC06A /* RMOrigin.swift in Sources */,
 				F13ACD762A211E5C000C792B /* RMSearchViewController.swift in Sources */,
+				F1070C002A2F58C9006F654D /* RMSearchViewViewModel.swift in Sources */,
 				F1903CEA2A0B9B6B00BFC06A /* RMCharacterListView.swift in Sources */,
+				F1070C052A2F5F3A006F654D /* RMNoSearchResultsViewViewModel.swift in Sources */,
 				F1903CDE2A09BC0100BFC06A /* RMSingleLocation.swift in Sources */,
 				F1903CE02A09BE6400BFC06A /* RMCharacterStatus.swift in Sources */,
 				F1903CE22A09BEDE00BFC06A /* RMCharacterGender.swift in Sources */,
 				F1070BFB2A2E90AB006F654D /* RMLocationDetailViewViewModel.swift in Sources */,
 				F1E2E39E2A126C3500EB1394 /* RMCharacterDetailViewController.swift in Sources */,
+				F1070C022A2F5EA7006F654D /* RMNoSearchResultsView.swift in Sources */,
 				F1E2E3A42A128FDC00EB1394 /* RMFooterLoadingCollectionReusableView.swift in Sources */,
 				F1070BF92A2E758D006F654D /* RMLocatiionDetailView.swift in Sources */,
 				F13ACD702A1FD18A000C792B /* RMEpisodeListView.swift in Sources */,
@@ -494,6 +531,7 @@
 				F13ACD7F2A241D94000C792B /* RMSettingsViewViewModel.swift in Sources */,
 				F1903CAE2A0941C500BFC06A /* RMTabViewController.swift in Sources */,
 				F1903CEE2A0C155F00BFC06A /* RMCharacterCollectionViewCell.swift in Sources */,
+				F1070C092A2F601A006F654D /* RMSearchInputViewViewModel.swift in Sources */,
 				F1E2E3B32A1A5AC300EB1394 /* RMCharacterInfoCollectionViewCellViewModel.swift in Sources */,
 				F13ACD832A2561A1000C792B /* RMSettingsOption.swift in Sources */,
 				F1903CD22A0961E800BFC06A /* RMEpisodeViewController.swift in Sources */,
@@ -504,8 +542,10 @@
 				F1E2E3AA2A1A58C100EB1394 /* RMCharacterPhotoCollectionViewCell.swift in Sources */,
 				F1E2E3B52A1A5AF100EB1394 /* RMCharacterEpisodeCollectionViewCellViewModel.swift in Sources */,
 				F13ACD812A242196000C792B /* RMSettingsCellViewModel.swift in Sources */,
+				F1070BFE2A2F5777006F654D /* RMSearchView.swift in Sources */,
 				F13ACD862A2775B3000C792B /* RMSettingsView.swift in Sources */,
 				F1903CD42A09620800BFC06A /* RMSettingsViewController.swift in Sources */,
+				F1070C072A2F5FD5006F654D /* RMSearchInputView.swift in Sources */,
 				F1903CEC2A0BF55900BFC06A /* Extensions.swift in Sources */,
 				F1E2E3B12A1A5A6D00EB1394 /* RMCharacterPhotoCollectionViewCellViewModel.swift in Sources */,
 				F1903CD62A098CF900BFC06A /* RMService.swift in Sources */,
