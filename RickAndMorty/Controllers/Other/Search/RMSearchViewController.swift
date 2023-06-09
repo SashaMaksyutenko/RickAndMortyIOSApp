@@ -16,9 +16,9 @@ final class RMSearchViewController: UIViewController {
     
     struct Config{
         enum `Type`{
-            case character
-            case episode
-            case location
+            case character // name | status | gender
+            case episode // name
+            case location // name | type
             var title:String{
                 switch self{
                 case .character:
@@ -52,9 +52,15 @@ final class RMSearchViewController: UIViewController {
         view.addSubview(searchView)
         addConstraints()
         navigationItem.rightBarButtonItem=UIBarButtonItem(title: "Search", style: .done, target: self, action: #selector(didTapExecuteSearch))
+        searchView.delegate=self
     }
-    @objc private func didTapExecuteSearch(){
-        //viewModel.executeSearch()
+    override func viewDidAppear(_ animated: Bool) {
+       super.viewDidDisappear(animated)
+            searchView.presentKeyboard()
+    }
+    @objc
+    private func didTapExecuteSearch(){
+        viewModel.exetuteSearch()
     }
     private func addConstraints(){
         NSLayoutConstraint.activate([
@@ -63,5 +69,18 @@ final class RMSearchViewController: UIViewController {
             searchView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             searchView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
+    }
+}
+//MARK: - RMSearchViewDelegate
+extension RMSearchViewController:RMSearchViewDelegate{
+    func rmSearchView(_ searchView: RMSearchView, didSelectOption option: RMSearchInputViewViewModel.DynamicOption) {
+        let vc=RMSearchOptionPickerViewController(option: option) {[weak self] selection in
+            DispatchQueue.main.async {
+                self?.viewModel.set(value: selection, for: option)
+            }
+        }
+        vc.sheetPresentationController?.detents=[.medium()]
+        vc.sheetPresentationController?.prefersGrabberVisible=true
+        present(vc,animated: true)
     }
 }
