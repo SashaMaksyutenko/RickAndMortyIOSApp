@@ -9,7 +9,7 @@ import Foundation
 /// Object that represents a single API Call
 final class RMRequest{
     ///API constants
-    private struct Constans{
+    private struct Constants{
         static let baseUrl="https://rickandmortyapi.com/api"
     }
     /// Desired endpoint
@@ -21,7 +21,7 @@ final class RMRequest{
     private let queryParameters:[URLQueryItem]
     /// constructed url for the api request in string format
     private var urlString:String{
-        var string=Constans.baseUrl
+        var string=Constants.baseUrl
         string+="/"
         string+=endpoint.rawValue
         if !pathComponents.isEmpty{
@@ -59,10 +59,10 @@ final class RMRequest{
     /// - Parameter url: URl to parse
     convenience init?(url:URL){
         let string=url.absoluteString
-        if !string .contains(Constans.baseUrl){
+        if !string .contains(Constants.baseUrl){
             return nil
         }
-        let trimmed=string.replacingOccurrences(of: Constans.baseUrl+"/", with: "")
+        let trimmed=string.replacingOccurrences(of: Constants.baseUrl+"/", with: "")
         if trimmed.contains("/"){
             let components=trimmed.components(separatedBy: "/")
             
