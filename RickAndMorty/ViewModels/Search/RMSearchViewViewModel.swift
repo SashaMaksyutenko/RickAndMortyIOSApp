@@ -16,6 +16,8 @@ final class RMSearchViewViewModel{
     private var searchText=""
     private var optionMapUpdateBlock:(((RMSearchInputViewViewModel.DynamicOption,String))->Void)?
     private var searchResultHandler:((RMSearchResultViewModel)->Void)?
+    private var noResultHandler:(()->Void)?
+
     //MARK: - Init
     init(config:RMSearchViewController.Config){
         self.config=config
@@ -23,6 +25,9 @@ final class RMSearchViewViewModel{
     //MARK: - PUBLIC
     public func registerSearchResultHandler(_ block:@escaping(RMSearchResultViewModel)->Void){
         self.searchResultHandler=block
+    }
+    public func registerNoResultHandler(_ block:@escaping()->Void){
+        self.noResultHandler=block
     }
     public func exetuteSearch(){
         // test search text
@@ -36,34 +41,6 @@ final class RMSearchViewViewModel{
         }))
         // create requests
         let request=RMRequest(endpoint: config.type.endpoint,queryParameters:queryParams)
-        
-//            switch config.type.endpoint{
-//            case .character:
-//                RMService.shared.execute(request, expecting: RMGetAllCharactersResponse.self) { result in
-//                    // notify view of results, no results or error
-//                    switch result{
-//                    case .success(let model):
-//                        // episodes, characters - collectionView; location - tableView
-//                        print ("Search results found: \(model.results.count)")
-//                    case .failure:
-//                        print("failed to get results")
-//                        break
-//                    }
-//                }
-//            case .episode:
-//                RMService.shared.execute(request, expecting: RMGetAllEpisodesResponse.self) { result in
-//                    // notify view of results, no results or error
-//                    switch result{
-//                    case .success(let model):
-//                        // episodes, characters - collectionView; location - tableView
-//                        print ("Search results found: \(model.results.count)")
-//                    case .failure:
-//                        print("failed to get results")
-//                        break
-//                    }
-//                }
-//            case .location:
-//            }
         switch config.type.endpoint{
         case .character:
             makeSearchAPICall(RMGetAllCharactersResponse.self, request: request)
@@ -80,7 +57,7 @@ final class RMSearchViewViewModel{
             case .success(let model):
                 self?.processSearchResults(model:model)
             case .failure:
-                print("failed to get results")
+                self?.handleNoResults()
                 break
             }
         }
@@ -107,7 +84,11 @@ final class RMSearchViewViewModel{
         }else
         {
             //fallBack error
+            handleNoResults()
         }
+    }
+    private func handleNoResults(){
+        print("No results")
     }
     public func set(query text:String){
         self.searchText=text
