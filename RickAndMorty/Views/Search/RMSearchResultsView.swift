@@ -63,21 +63,24 @@ class RMSearchResultsView: UIView {
             setUpCollectionView()
         }
     }
-    
     private func setUpCollectionView(){
-        self.tableView.isHidden=true
-        self.collectionView.isHidden=false
-        collectionView.delegate=self
-        collectionView.dataSource=self
-        collectionView.reloadData()
+        DispatchQueue.main.async { [self] in
+            self.tableView.isHidden=true
+            self.collectionView.isHidden=false
+            self.collectionView.delegate=self
+            self.collectionView.dataSource=self
+            collectionView.reloadData()
+        }
     }
     private func setUpTableView(viewModels:[RMLocationTableViewCellViewModel]){
-        tableView.delegate=self
-        tableView.dataSource=self
-        tableView.isHidden=false
-        self.collectionView.isHidden=true
-        self.locationCellViewModels=viewModels
-        tableView.reloadData()
+        DispatchQueue.main.async{ [self] in
+            self.tableView.delegate=self
+            self.tableView.dataSource=self
+            tableView.isHidden=false
+            self.collectionView.isHidden=true
+            self.locationCellViewModels=viewModels
+            tableView.reloadData()        }
+        
     }
     private func addConstraints(){
         NSLayoutConstraint.activate([

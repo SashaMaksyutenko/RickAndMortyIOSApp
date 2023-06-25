@@ -90,7 +90,7 @@ final class RMSearchViewViewModel{
         }
     }
     private func handleNoResults(){
-        print("No results")
+        noResultHandler?()
     }
     public func set(query text:String){
         self.searchText=text

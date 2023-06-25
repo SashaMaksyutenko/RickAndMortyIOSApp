@@ -10,7 +10,6 @@ import UIKit
 protocol RMCharacterListViewDelegate:AnyObject{
     func rmCharacterListView(_ characterListView:RMCharacterListView,
                              didSelectCharacter character:RMCharacter)
-    
 }
 final class RMCharacterListView: UIView {
     public weak var delegate:RMCharacterListViewDelegate?
@@ -61,14 +60,12 @@ final class RMCharacterListView: UIView {
     private func setUpCollectionView(){
         collectionView.dataSource = viewModel
         collectionView.delegate = viewModel
-    
     }
 }
 extension RMCharacterListView:RMCharacterListViewModelDelegate{
     func didSelectCharacter(_ character: RMCharacter) {
         delegate?.rmCharacterListView(self, didSelectCharacter: character)
     }
-    
     func didLoadInitialCharacters() {
         spinner.stopAnimating()
         collectionView.isHidden=false
