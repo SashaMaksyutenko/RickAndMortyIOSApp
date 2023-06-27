@@ -32,6 +32,9 @@ final class RMSearchViewViewModel{
     }
     public func exetuteSearch(){
         // test search text
+        guard !searchText.trimmingCharacters(in: .whitespaces).isEmpty else{
+            return
+        }
         // build arguments
         var queryParams:[URLQueryItem]=[URLQueryItem(name: "name", value: searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed))]
         // Add options
@@ -64,16 +67,20 @@ final class RMSearchViewViewModel{
         }
     }
     private func processSearchResults(model:Codable){
-        var resultsVM:RMSearchResultViewModel?
+        var resultsVM:RMSearchResultType?
+        var nextUrl:String?
         if let characterResults=model as? RMGetAllCharactersResponse{
             resultsVM = .characters(characterResults.results.compactMap({
                 return RMCharacterCollectionViewCellViewModel(characterName: $0.name, characterStatus: $0.status, characterImageUrl: URL(string: $0.image))
             }))
+            nextUrl=characterResults.info.next
         }
         else if let episodesResults=model as? RMGetAllEpisodesResponse{
             resultsVM = .episodes(episodesResults.results.compactMap({
                 return RMCharacterEpisodeCollectionViewCellViewModel(episodeDataUrl: URL(string:$0.url))
             }))
+            nextUrl=episodesResults.info.next
+
         }
         else if let locationsResults=model as? RMGetAllLocationsResponse{
             resultsVM = .locations(locationsResults.results.compactMap({
@@ -82,7 +89,8 @@ final class RMSearchViewViewModel{
         }
         if let results=resultsVM{
             self.searchResultModel=model
-            self.searchResultHandler?(results)
+            let vm=RMSearchResultViewModel(results: results,next:nextUrl)
+            self.searchResultHandler?(vm)
         }else
         {
             //fallBack error

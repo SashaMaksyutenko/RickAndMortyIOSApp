@@ -51,6 +51,7 @@ final class RMCharacterListView: UIView {
             spinner.heightAnchor.constraint(equalToConstant: 100),
             spinner.centerXAnchor.constraint(equalTo:centerXAnchor),
             spinner.centerYAnchor.constraint(equalTo:centerYAnchor),
+            
             collectionView.topAnchor.constraint(equalTo:topAnchor),
             collectionView.leftAnchor.constraint(equalTo:leftAnchor),
             collectionView.rightAnchor.constraint(equalTo:rightAnchor),
